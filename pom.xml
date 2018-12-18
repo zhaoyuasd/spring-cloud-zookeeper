@@ -41,6 +41,7 @@
 		<module>spring-cloud-starter-zookeeper-all</module>
 		<module>spring-cloud-zookeeper-sample</module>
 		<module>docs</module>
+		<module>spring-cloud-zookeeper</module>
 	</modules>
 
 	<build>
