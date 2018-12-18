@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<artifactId>spring-cloud-dependencies-parent</artifactId>
-		<groupId>org.springframework.cloud</groupId>
+		<groupId>org.springframework.cloud.zy</groupId>
 		<version>2.1.0.BUILD-SNAPSHOT</version>
         <relativePath/>
 	</parent>
@@ -19,37 +19,37 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>org.springframework.cloud</groupId>
+				<groupId>org.springframework.cloud.zy</groupId>
 				<artifactId>spring-cloud-zookeeper-core</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.springframework.cloud</groupId>
+				<groupId>org.springframework.cloud.zy</groupId>
 				<artifactId>spring-cloud-zookeeper-config</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.springframework.cloud</groupId>
+				<groupId>org.springframework.cloud.zy</groupId>
 				<artifactId>spring-cloud-zookeeper-discovery</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.springframework.cloud</groupId>
+				<groupId>org.springframework.cloud.zy</groupId>
 				<artifactId>spring-cloud-starter-zookeeper</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.springframework.cloud</groupId>
+				<groupId>org.springframework.cloud.zy</groupId>
 				<artifactId>spring-cloud-starter-zookeeper-all</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.springframework.cloud</groupId>
+				<groupId>org.springframework.cloud.zy</groupId>
 				<artifactId>spring-cloud-starter-zookeeper-config</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.springframework.cloud</groupId>
+				<groupId>org.springframework.cloud.zy</groupId>
 				<artifactId>spring-cloud-starter-zookeeper-discovery</artifactId>
 				<version>${project.version}</version>
 			</dependency>
