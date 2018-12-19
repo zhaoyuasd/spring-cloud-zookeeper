@@ -65,6 +65,7 @@ public class ZookeeperRibbonClientConfiguration {
 	private String serviceId = "client";
 
 	public ZookeeperRibbonClientConfiguration() {
+		System.out.println("ZookeeperRibbonClientConfiguration in the  context");
 	}
 
 	@Bean

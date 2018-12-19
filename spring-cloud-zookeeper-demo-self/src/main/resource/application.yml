@@ -3,6 +3,10 @@ server:
 spring:
   application:
     name: zookeeper-self
+  cloud:
+    zookeeper:
+      discovery:
+        root: /zk-service
 logging:
   level:
-    org.springframework: trace
+    org.springframework: error
