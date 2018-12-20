@@ -30,9 +30,11 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
+			<groupId>org.springframework.cloud.zy</groupId>
 			<artifactId>spring-cloud-zookeeper-core</artifactId>
-		</dependency>
+			 <version>${project.version}</version> 
+			<!-- <systemPath>D:/idea/mvnRepo/org/springframework/cloud/zy/spring-cloud-zookeeper-core/2.1.0.BUILD-SNAPSHOT/spring-cloud-zookeeper-core-2.1.0.BUILD-SNAPSHOT.jar</systemPath>
+		 --></dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-commons</artifactId>

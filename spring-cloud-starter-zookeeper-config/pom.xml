@@ -21,12 +21,14 @@
 	</properties>
 	<dependencies>
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
+			<groupId>org.springframework.cloud.zy</groupId>
 			<artifactId>spring-cloud-starter-zookeeper</artifactId>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
+			<groupId>org.springframework.cloud.zy</groupId>
 			<artifactId>spring-cloud-zookeeper-config</artifactId>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>

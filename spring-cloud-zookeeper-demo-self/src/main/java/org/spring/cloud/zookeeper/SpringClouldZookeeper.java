@@ -1,13 +1,16 @@
 package org.spring.cloud.zookeeper;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
+import org.springframework.cloud.client.serviceregistry.Registration;
 import org.springframework.cloud.zookeeper.discovery.RibbonZookeeperAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,11 +24,25 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 @EnableAutoConfiguration
 public class SpringClouldZookeeper {
-	@Autowired
+	
+	@Value("${spring.application.name}")
+	private String appName;
+	
+	@Autowired(required=true)
 	private LoadBalancerClient loadBalancer;
 
 	@Autowired
 	private DiscoveryClient discovery;
+	
+
+   @Autowired(required = false)
+	private Registration registration;
+   
+   @RequestMapping("/")
+	public ServiceInstance lb() {
+	   System.out.println(appName);
+		return this.loadBalancer.choose(this.appName);
+	}
 	
    public static void main(String[] args) {
 	SpringApplication.run(SpringClouldZookeeper.class, args);
@@ -39,7 +56,7 @@ public class SpringClouldZookeeper {
 	}
     
   
-   @RequestMapping({"/hello","/"})
+   @RequestMapping({"/hello"})
    public String hello(String msg) {
 	   return "get info :"+msg;
    }

@@ -57,8 +57,8 @@ public class SampleZookeeperApplication {
 	@Autowired
 	private Environment env;
 
-	@Autowired
-	private AppClient appClient;
+	/*@Autowired
+	private AppClient appClient;*/
 
 	@Autowired(required = false)
 	private Registration registration;
@@ -73,25 +73,26 @@ public class SampleZookeeperApplication {
 		return "Hello World! from " + this.registration;
 	}
 
-	@RequestMapping("/self")
+	/*@RequestMapping("/self")
 	public String self() {
 		return this.appClient.hi();
 	}
-
+*/
 	@RequestMapping("/myenv")
 	public String env(@RequestParam("prop") String prop) {
 		return this.env.getProperty(prop, "Not Found");
 	}
 
-	@FeignClient("testZookeeperApp")
+/*	@FeignClient("testZookeeperApp")
 	interface AppClient {
 		@RequestMapping(path = "/hi", method = RequestMethod.GET)
 		String hi();
-	}
+	}*/
 
 	@Autowired
 	RestTemplate rest;
 
+	@RequestMapping("/rt")
 	public String rt() {
 		return this.rest.getForObject("http://" + this.appName + "/hi", String.class);
 	}
