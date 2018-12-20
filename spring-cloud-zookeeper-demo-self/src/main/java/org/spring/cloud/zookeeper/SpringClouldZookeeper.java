@@ -39,15 +39,22 @@ public class SpringClouldZookeeper {
 	private Registration registration;
    
    @RequestMapping("/")
-	public ServiceInstance lb() {
+	public Object lb() {
 	   System.out.println(appName);
-		return this.loadBalancer.choose(this.appName);
+	   ServiceInstance ss=this.loadBalancer.choose(this.appName);
+	return ss;
 	}
 	
    public static void main(String[] args) {
 	SpringApplication.run(SpringClouldZookeeper.class, args);
 }
-  
+   @Autowired
+	RestTemplate rest;
+
+	@RequestMapping("/rt")
+	public String rt() {
+		return this.rest.getForObject("http://" + this.appName + "/hello", String.class);
+	}
    
     @LoadBalanced //开启负载均衡客户端
 	@Bean //注册一个具有容错功能的RestTemplate

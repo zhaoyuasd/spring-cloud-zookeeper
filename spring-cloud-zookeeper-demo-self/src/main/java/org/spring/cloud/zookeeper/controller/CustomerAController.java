@@ -12,7 +12,7 @@ import com.alibaba.fastjson.JSONObject;
 @RestController
 public class CustomerAController {
 	@Autowired
-	private RestTemplate restTemplate;
+	private RestTemplate rest;
 /*	@Autowired
 	private  LoadBalancerClient loadBalancer;
 	@RequestMapping("hello2")
@@ -35,7 +35,7 @@ public class CustomerAController {
 			URI uu=URI.create("http://HAS-ZK-APP/hello?name="+name);
 			URI requestUrl = loadBalancer.reconstructURI(instance,uu);*/
 			//System.out.println(uu);
-			return restTemplate.getForObject("http://HAS-ZK-APP/hello?name="+name, String.class);
+			return rest.getForObject("http://has-zk-app/hello?name="+name, String.class);
 	    }
 
 } 

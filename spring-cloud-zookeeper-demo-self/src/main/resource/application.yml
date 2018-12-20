@@ -5,17 +5,17 @@ spring:
     name: zookeeper-self
   cloud:
     zookeeper:
-      HAS-ZK-APP:
-       path: /zk-service/has-zk-app
-       loadBalancerType: ROUND_ROBIN
-       contentTypeTemplate: application/vnd.newsletter.$version+json
-       version: v1
+      has-zk-app:
+        path: /zk-service/has-zk-app
+        loadBalancerType: ROUND_ROBIN
+        contentTypeTemplate: application/vnd.newsletter.$version+json
+        version: v1
        #headers:
         # header1:
         #    - value1
         #  header2:
         #     - value2
-       required: true
+        required: true
       # stubs: org.springframework:foo:stubs
       discovery:
         root: /zk-service
