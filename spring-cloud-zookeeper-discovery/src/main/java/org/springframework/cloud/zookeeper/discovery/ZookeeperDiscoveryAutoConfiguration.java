@@ -49,18 +49,18 @@ public class ZookeeperDiscoveryAutoConfiguration {
 		 System.out.println("ZookeeperDiscoveryAutoConfiguration in the  context");
 	}
 
-	@Autowired(required = true)
+	@Autowired(required = false)
 	private ZookeeperDependencies zookeeperDependencies;
 
 	@Autowired
 	private CuratorFramework curator;
 
 	
-	@Bean
+	/*@Bean
 	@ConditionalOnMissingBean
 	public ZookeeperDependencies zookeeperDependencies() {
 		return new ZookeeperDependencies();
-	}
+	}*/
 	
 	
 	@Bean
