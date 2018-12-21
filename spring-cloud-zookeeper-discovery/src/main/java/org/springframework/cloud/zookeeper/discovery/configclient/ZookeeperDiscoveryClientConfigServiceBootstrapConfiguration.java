@@ -43,7 +43,7 @@ import org.springframework.core.annotation.Order;
 @Order(0)
 public class ZookeeperDiscoveryClientConfigServiceBootstrapConfiguration {
    public ZookeeperDiscoveryClientConfigServiceBootstrapConfiguration() {
-   System.out.println("ZookeeperDiscoveryClientConfigServiceBootstrapConfiguration in the context");
+    System.out.println("ZookeeperDiscoveryClientConfigServiceBootstrapConfiguration in the context");
    }
 	@Bean
 	public ZookeeperDiscoveryProperties zookeeperDiscoveryProperties(InetUtils inetUtils) {
