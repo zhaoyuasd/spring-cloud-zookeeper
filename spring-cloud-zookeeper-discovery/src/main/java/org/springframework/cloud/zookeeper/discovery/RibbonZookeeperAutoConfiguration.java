@@ -40,4 +40,7 @@ import org.springframework.context.annotation.Configuration;
 @AutoConfigureAfter(RibbonAutoConfiguration.class)
 @RibbonClients(defaultConfiguration = ZookeeperRibbonClientConfiguration.class)
 public class RibbonZookeeperAutoConfiguration {
+	public RibbonZookeeperAutoConfiguration() {
+		System.out.println("RibbonZookeeperAutoConfiguration in the context");
+	}
 }

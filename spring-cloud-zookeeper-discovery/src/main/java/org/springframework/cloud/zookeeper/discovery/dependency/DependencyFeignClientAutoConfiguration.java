@@ -59,7 +59,12 @@ public class DependencyFeignClientAutoConfiguration {
 	@Autowired private ZookeeperDependencies zookeeperDependencies;
 	@Autowired private CachingSpringLoadBalancerFactory loadBalancerFactory;
 	@Autowired private SpringClientFactory springClientFactory;
-
+public DependencyFeignClientAutoConfiguration() {
+	System.out.println("DependencyFeignClientAutoConfiguration in the context");
+}
+	
+	
+	
 	@Bean
 	@Primary
 	Client dependencyBasedFeignClient() {

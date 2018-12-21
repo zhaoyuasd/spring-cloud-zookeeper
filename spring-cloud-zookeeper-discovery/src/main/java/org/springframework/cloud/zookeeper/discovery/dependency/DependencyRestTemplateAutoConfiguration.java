@@ -52,6 +52,9 @@ import org.springframework.web.client.RestTemplate;
 @AutoConfigureAfter(DependencyRibbonAutoConfiguration.class)
 public class DependencyRestTemplateAutoConfiguration {
 
+	public DependencyRestTemplateAutoConfiguration() {
+		System.out.println("DependencyRestTemplateAutoConfiguration in the context");
+	}
 	@Autowired @LoadBalanced RestTemplate restTemplate;
 	@Autowired ZookeeperDependencies zookeeperDependencies;
 

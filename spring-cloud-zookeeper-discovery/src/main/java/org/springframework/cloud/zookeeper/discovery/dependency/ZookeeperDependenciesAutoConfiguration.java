@@ -35,7 +35,10 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalOnDependenciesPassed
 @AutoConfigureAfter(ZookeeperAutoConfiguration.class)
 public class ZookeeperDependenciesAutoConfiguration {
-
+   public ZookeeperDependenciesAutoConfiguration() {
+	   System.out.println("ZookeeperDependenciesAutoConfiguration in the context");
+   }
+	
 	@Bean
 	@ConditionalOnMissingBean
 	public ZookeeperDependencies zookeeperDependencies() {

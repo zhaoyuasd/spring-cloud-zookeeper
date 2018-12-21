@@ -30,11 +30,12 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ConditionalOnProperty(value = "spring.cloud.zookeeper.discovery.enabled", matchIfMissing = true)
 public class ZookeeperDiscoveryClientConfiguration {
-
+    
 	class Marker {}
 
 	@Bean
 	public Marker zookeeperDiscoveryClientMarker() {
+		System.out.println("ConfigServicePropertySourceLocator in the context");
 		return new Marker();
 	}
 

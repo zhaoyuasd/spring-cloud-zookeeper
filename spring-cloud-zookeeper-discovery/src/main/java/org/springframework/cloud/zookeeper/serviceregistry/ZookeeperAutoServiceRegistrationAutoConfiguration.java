@@ -42,6 +42,10 @@ import org.springframework.util.StringUtils;
 @AutoConfigureBefore( {AutoServiceRegistrationAutoConfiguration.class,ZookeeperDiscoveryAutoConfiguration.class} )
 public class ZookeeperAutoServiceRegistrationAutoConfiguration {
 
+	public ZookeeperAutoServiceRegistrationAutoConfiguration() {
+		System.out.println("ZookeeperAutoServiceRegistrationAutoConfiguration in the context");
+	}
+	
 	@Bean
 	public ZookeeperAutoServiceRegistration zookeeperAutoServiceRegistration(
 			ZookeeperServiceRegistry registry, ZookeeperRegistration registration,

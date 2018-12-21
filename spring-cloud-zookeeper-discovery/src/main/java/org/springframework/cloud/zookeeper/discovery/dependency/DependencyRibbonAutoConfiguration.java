@@ -49,7 +49,10 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalOnDependenciesPassed
 @AutoConfigureBefore(RibbonAutoConfiguration.class)
 public class DependencyRibbonAutoConfiguration {
-
+   public DependencyRibbonAutoConfiguration() {
+	   System.out.println("DependencyRibbonAutoConfiguration in the context");
+   }
+	
 	private static final Log log = LogFactory.getLog(DependencyRibbonAutoConfiguration.class);
 
 	@Autowired ApplicationContext applicationContext;

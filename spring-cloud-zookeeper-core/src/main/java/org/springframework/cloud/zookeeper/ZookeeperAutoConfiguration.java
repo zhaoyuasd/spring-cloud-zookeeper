@@ -42,7 +42,7 @@ import org.springframework.context.annotation.Configuration;
 public class ZookeeperAutoConfiguration {
 
 public ZookeeperAutoConfiguration() {
-System.out.println("ZookeeperAutoConfiguration in the ");
+System.out.println("ZookeeperAutoConfiguration in the context ");
 }
 	
 	private static final Log log = LogFactory.getLog(ZookeeperAutoConfiguration.class);

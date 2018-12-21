@@ -49,7 +49,11 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalOnDependenciesPassed
 @AutoConfigureAfter({ZookeeperDependenciesAutoConfiguration.class,ZookeeperDiscoveryAutoConfiguration.class})
 public class DependencyWatcherAutoConfiguration {
-
+     public DependencyWatcherAutoConfiguration() {
+    	 System.out.println("DependencyWatcherAutoConfiguration in the context");
+     }
+	
+	
 	@Autowired(required = false)
 	private List<DependencyWatcherListener> dependencyWatcherListeners = new ArrayList<>();
 

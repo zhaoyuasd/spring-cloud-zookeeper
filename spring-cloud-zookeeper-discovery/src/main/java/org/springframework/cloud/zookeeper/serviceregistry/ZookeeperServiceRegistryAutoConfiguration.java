@@ -42,6 +42,11 @@ import org.springframework.context.annotation.Configuration;
 @AutoConfigureBefore(ServiceRegistryAutoConfiguration.class)
 public class ZookeeperServiceRegistryAutoConfiguration implements ApplicationContextAware {
 
+	
+	public ZookeeperServiceRegistryAutoConfiguration() {
+		System.out.println("ZookeeperServiceRegistryAutoConfiguration in the context");
+	}
+	
 	private ApplicationContext context;
 
 	@Override

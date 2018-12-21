@@ -39,6 +39,9 @@ import org.springframework.context.annotation.Configuration;
 @AutoConfigureBefore({ ZookeeperDiscoveryAutoConfiguration.class,
 		ZookeeperServiceRegistryAutoConfiguration.class })
 public class CuratorServiceDiscoveryAutoConfiguration {
+	public CuratorServiceDiscoveryAutoConfiguration() {
+		System.out.println("CuratorServiceDiscoveryAutoConfiguration in the context");
+	}
 
 	@Bean
 	@ConditionalOnMissingBean(ServiceDiscoveryCustomizer.class)
