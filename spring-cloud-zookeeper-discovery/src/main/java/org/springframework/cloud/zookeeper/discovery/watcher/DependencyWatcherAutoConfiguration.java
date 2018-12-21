@@ -24,6 +24,7 @@ import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cloud.zookeeper.ConditionalOnZookeeperEnabled;
+import org.springframework.cloud.zookeeper.discovery.ZookeeperDiscoveryAutoConfiguration;
 import org.springframework.cloud.zookeeper.discovery.ZookeeperInstance;
 import org.springframework.cloud.zookeeper.discovery.dependency.ConditionalOnDependenciesPassed;
 import org.springframework.cloud.zookeeper.discovery.dependency.ZookeeperDependencies;
@@ -46,7 +47,7 @@ import org.springframework.context.annotation.Configuration;
 @EnableConfigurationProperties
 @ConditionalOnZookeeperEnabled
 @ConditionalOnDependenciesPassed
-@AutoConfigureAfter(ZookeeperDependenciesAutoConfiguration.class)
+@AutoConfigureAfter({ZookeeperDependenciesAutoConfiguration.class,ZookeeperDiscoveryAutoConfiguration.class})
 public class DependencyWatcherAutoConfiguration {
 
 	@Autowired(required = false)

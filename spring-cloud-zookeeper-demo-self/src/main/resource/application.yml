@@ -5,7 +5,10 @@ spring:
     name: zookeeper-self
   cloud:
     zookeeper:
-      has-zk-app:
+     discovery:
+         root: /zk-service
+     dependencies:
+      has-zk-app1:
         path: /zk-service/has-zk-app
         loadBalancerType: ROUND_ROBIN
         contentTypeTemplate: application/vnd.newsletter.$version+json
@@ -17,8 +20,7 @@ spring:
         #     - value2
         required: true
       # stubs: org.springframework:foo:stubs
-      discovery:
-        root: /zk-service
+     
 logging:
   level:
     org.springframework: error

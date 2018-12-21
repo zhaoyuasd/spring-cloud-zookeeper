@@ -37,5 +37,16 @@ public class CustomerAController {
 			//System.out.println(uu);
 			return rest.getForObject("http://has-zk-app/hello?name="+name, String.class);
 	    }
+	@RequestMapping("hello1")
+	 public String helloService1(String name) {
+	        //Get请求调用服务，restTemplate被@LoadBalanced注解标记，Get方法会自动进行负载均衡
+			/*System.out.println(loadBalancer.getClass().getName());
+			final ServiceInstance instance = loadBalancer.choose("HAS-ZK-APP");
+			System.out.println(JSONObject.toJSONString(instance));
+			URI uu=URI.create("http://HAS-ZK-APP/hello?name="+name);
+			URI requestUrl = loadBalancer.reconstructURI(instance,uu);*/
+			//System.out.println(uu);
+			return rest.getForObject("http://has-zk-app1/hello?name="+name, String.class);
+	    }
 
 } 

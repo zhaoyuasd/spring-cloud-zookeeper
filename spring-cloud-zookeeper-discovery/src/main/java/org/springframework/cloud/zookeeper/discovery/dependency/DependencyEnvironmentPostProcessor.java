@@ -38,6 +38,9 @@ import org.springframework.util.StringUtils;
 public class DependencyEnvironmentPostProcessor
 		implements EnvironmentPostProcessor, Ordered {
 
+	public DependencyEnvironmentPostProcessor() {
+		System.out.println("DependencyEnvironmentPostProcessor in the context");
+	}
 	// after ConfigFileEnvironmentPostProcessorr
 	private int order = ConfigFileApplicationListener.DEFAULT_ORDER + 1;
 

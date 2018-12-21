@@ -27,7 +27,7 @@ public class SpringClouldZookeeper {
 	
 	@Value("${spring.application.name}")
 	private String appName;
-	
+	/*
 	@Autowired(required=true)
 	private LoadBalancerClient loadBalancer;
 
@@ -43,17 +43,18 @@ public class SpringClouldZookeeper {
 	   System.out.println(appName);
 	   ServiceInstance ss=this.loadBalancer.choose(this.appName);
 	return ss;
-	}
+	}*/
 	
    public static void main(String[] args) {
 	SpringApplication.run(SpringClouldZookeeper.class, args);
 }
    @Autowired
-	RestTemplate rest;
+	RestTemplate restTemplate;
 
 	@RequestMapping("/rt")
 	public String rt() {
-		return this.rest.getForObject("http://" + this.appName + "/hello", String.class);
+		System.out.println(restTemplate.getClass().getName());
+		return this.restTemplate.getForObject("http://" + this.appName + "/hello", String.class);
 	}
    
     @LoadBalanced //开启负载均衡客户端

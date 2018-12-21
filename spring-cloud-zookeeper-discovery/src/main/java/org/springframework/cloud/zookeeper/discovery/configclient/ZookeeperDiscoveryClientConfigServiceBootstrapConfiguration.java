@@ -42,7 +42,9 @@ import org.springframework.core.annotation.Order;
 		CuratorServiceDiscoveryAutoConfiguration.class, ZookeeperDiscoveryAutoConfiguration.class})
 @Order(0)
 public class ZookeeperDiscoveryClientConfigServiceBootstrapConfiguration {
-
+   public ZookeeperDiscoveryClientConfigServiceBootstrapConfiguration() {
+   System.out.println("ZookeeperDiscoveryClientConfigServiceBootstrapConfiguration in the context");
+   }
 	@Bean
 	public ZookeeperDiscoveryProperties zookeeperDiscoveryProperties(InetUtils inetUtils) {
 		ZookeeperDiscoveryProperties properties = new ZookeeperDiscoveryProperties(inetUtils);

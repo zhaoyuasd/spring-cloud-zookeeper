@@ -33,6 +33,8 @@ import org.springframework.cloud.zookeeper.discovery.dependency.ZookeeperDepende
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.alibaba.fastjson.JSONObject;
+
 /**
  * @author Spencer Gibb
  * @since 1.1.0
@@ -43,13 +45,24 @@ import org.springframework.context.annotation.Configuration;
 @AutoConfigureBefore({CommonsClientAutoConfiguration.class, NoopDiscoveryClientAutoConfiguration.class})
 @AutoConfigureAfter({ZookeeperDiscoveryClientConfiguration.class})
 public class ZookeeperDiscoveryAutoConfiguration {
+	public ZookeeperDiscoveryAutoConfiguration() {
+		 System.out.println("ZookeeperDiscoveryAutoConfiguration in the  context");
+	}
 
-	@Autowired(required = false)
+	@Autowired(required = true)
 	private ZookeeperDependencies zookeeperDependencies;
 
 	@Autowired
 	private CuratorFramework curator;
 
+	
+	@Bean
+	@ConditionalOnMissingBean
+	public ZookeeperDependencies zookeeperDependencies() {
+		return new ZookeeperDependencies();
+	}
+	
+	
 	@Bean
 	@ConditionalOnMissingBean
 	public ZookeeperDiscoveryProperties zookeeperDiscoveryProperties(InetUtils inetUtils) {
@@ -62,6 +75,7 @@ public class ZookeeperDiscoveryAutoConfiguration {
 	public ZookeeperDiscoveryClient zookeeperDiscoveryClient(
 			ServiceDiscovery<ZookeeperInstance> serviceDiscovery,
 			ZookeeperDiscoveryProperties zookeeperDiscoveryProperties) {
+		System.out.println("ZookeeperDiscoveryClient"+JSONObject.toJSONString(zookeeperDependencies));
 		return new ZookeeperDiscoveryClient(serviceDiscovery, this.zookeeperDependencies,
 				zookeeperDiscoveryProperties);
 	}
@@ -79,6 +93,7 @@ public class ZookeeperDiscoveryAutoConfiguration {
 				CuratorFramework curatorFramework,
 				ServiceDiscovery<ZookeeperInstance> serviceDiscovery,
 				ZookeeperDiscoveryProperties properties) {
+			System.out.println("ZookeeperDiscoveryHealthIndicator"+JSONObject.toJSONString(zookeeperDependencies));
 			return new ZookeeperDiscoveryHealthIndicator(curatorFramework,
 					serviceDiscovery, this.zookeeperDependencies, properties);
 		}

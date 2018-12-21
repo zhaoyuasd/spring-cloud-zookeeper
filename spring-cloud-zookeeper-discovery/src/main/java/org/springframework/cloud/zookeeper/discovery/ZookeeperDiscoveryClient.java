@@ -99,6 +99,7 @@ public class ZookeeperDiscoveryClient implements DiscoveryClient {
 	private String getServiceIdToQuery(String serviceId) {
 		if (this.zookeeperDependencies != null && this.zookeeperDependencies.hasDependencies()) {
 			String pathForAlias = this.zookeeperDependencies.getPathForAlias(serviceId);
+			System.out.println("getServiceIdToQuery "+"pathForAlias:"+pathForAlias+"  serviceId:"+serviceId);
 			return pathForAlias.isEmpty() ? serviceId : pathForAlias;
 		}
 		return serviceId;

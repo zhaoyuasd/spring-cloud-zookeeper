@@ -41,6 +41,10 @@ import org.springframework.context.annotation.Configuration;
 @EnableConfigurationProperties
 public class ZookeeperAutoConfiguration {
 
+public ZookeeperAutoConfiguration() {
+System.out.println("ZookeeperAutoConfiguration in the ");
+}
+	
 	private static final Log log = LogFactory.getLog(ZookeeperAutoConfiguration.class);
 
 	@Autowired(required = false)
