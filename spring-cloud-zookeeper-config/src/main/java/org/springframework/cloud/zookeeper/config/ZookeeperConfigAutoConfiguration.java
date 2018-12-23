@@ -35,6 +35,9 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalOnZookeeperEnabled
 @ConditionalOnProperty(value = "spring.cloud.zookeeper.config.enabled", matchIfMissing = true)
 public class ZookeeperConfigAutoConfiguration {
+	public	ZookeeperConfigAutoConfiguration() {
+		System.out.println("ZookeeperConfigAutoConfiguration------------");
+	}
 
 	@Configuration
 	@ConditionalOnClass(RefreshEndpoint.class)

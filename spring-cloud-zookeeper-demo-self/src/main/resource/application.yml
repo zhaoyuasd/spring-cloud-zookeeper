@@ -1,15 +1,13 @@
 server:
   port: 8087
 spring:
-  application:
-    name: zookeeper-self
   cloud:
     zookeeper:
      discovery:
          root: /zk-service
      dependencies:
       has-zk-app1:
-        path: /zk-service/has-zk-app
+        path: /has-zk-app
         loadBalancerType: ROUND_ROBIN
         contentTypeTemplate: application/vnd.newsletter.$version+json
         version: v1
@@ -18,7 +16,7 @@ spring:
         #    - value1
         #  header2:
         #     - value2
-        required: true
+        required: false
       # stubs: org.springframework:foo:stubs
      
 logging:

@@ -27,6 +27,9 @@ public class SpringClouldZookeeper {
 	
 	@Value("${spring.application.name}")
 	private String appName;
+	
+	@Value("${name}")
+	private String name;
 	/*
 	@Autowired(required=true)
 	private LoadBalancerClient loadBalancer;
@@ -66,7 +69,7 @@ public class SpringClouldZookeeper {
   
    @RequestMapping({"/hello"})
    public String hello(String msg) {
-	   return "get info :"+msg;
+	   return "get info :"+msg+" name:"+name;
    }
    
 }
