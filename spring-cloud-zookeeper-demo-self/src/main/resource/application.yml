@@ -1,9 +1,7 @@
 # https://cloud.spring.io/spring-cloud-zookeeper/single/spring-cloud-zookeeper.html
 server:
-  port: 8087
+  port:  8087
 spring:
-  application:
-    name: zookeeper-self
   cloud:
     zookeeper:
      discovery:
@@ -19,7 +17,7 @@ spring:
         #    - value1
         #  header2:
         #     - value2
-        required: true
+        required: false
       # stubs: org.springframework:foo:stubs
      
 logging:

@@ -24,6 +24,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
+import com.alibaba.fastjson.JSONObject;
+
 /**
  * Bootstrap Configuration for Zookeeper Configuration
  *
@@ -34,17 +36,22 @@ import org.springframework.context.annotation.Import;
 @ConditionalOnZookeeperEnabled
 @Import(ZookeeperAutoConfiguration.class)
 public class ZookeeperConfigBootstrapConfiguration {
-
+public ZookeeperConfigBootstrapConfiguration() {
+	System.out.println("ZookeeperConfigBootstrapConfiguration -----------");
+}
 	@Bean
 	@ConditionalOnMissingBean
 	public ZookeeperPropertySourceLocator zookeeperPropertySourceLocator(
 			CuratorFramework curator, ZookeeperConfigProperties properties) {
+		System.out.println("ZookeeperConfigBootstrapConfiguration -----------ZookeeperPropertySourceLocator");
+		System.out.println(JSONObject.toJSONString(properties));
 		return new ZookeeperPropertySourceLocator(curator, properties);
 	}
 
 	@Bean
 	@ConditionalOnMissingBean
 	public ZookeeperConfigProperties zookeeperConfigProperties() {
+		System.out.println("ZookeeperConfigBootstrapConfiguration -----------ZookeeperPropertySourceLocator");
 		return new ZookeeperConfigProperties();
 	}
 }
