@@ -7,7 +7,7 @@ spring:
   cloud:
     zookeeper:
      discovery:
-         root: /zk-service #这里指定后  下面的dependencies 的path在实际寻找的时候 就变为 /zk-service/zk-service/has-zk-app
+         root: /zk-service  #这里指定后  下面的dependencies 的path在实际寻找的时候 就变为 /zk-service/zk-service/has-zk-app
      dependencies:
       has-zk-app1:
         path: /has-zk-app
