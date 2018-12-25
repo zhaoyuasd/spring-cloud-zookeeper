@@ -12,3 +12,5 @@ spring:
             enabled: false
    profiles:
      active: dev
+   main:
+    allow-bean-definition-overriding: true

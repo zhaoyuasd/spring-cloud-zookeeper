@@ -16,10 +16,20 @@
 
 package org.springframework.cloud.zookeeper.config;
 
+import java.util.Arrays;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.apache.curator.RetryPolicy;
+import org.apache.curator.ensemble.EnsembleProvider;
+import org.apache.curator.framework.AuthInfo;
 import org.apache.curator.framework.CuratorFramework;
+import org.apache.curator.framework.CuratorFrameworkFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.cloud.zookeeper.ConditionalOnZookeeperEnabled;
 import org.springframework.cloud.zookeeper.ZookeeperAutoConfiguration;
+import org.springframework.cloud.zookeeper.ZookeeperProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -39,6 +49,10 @@ public class ZookeeperConfigBootstrapConfiguration {
 public ZookeeperConfigBootstrapConfiguration() {
 	System.out.println("ZookeeperConfigBootstrapConfiguration -----------");
 }
+private static final Log log = LogFactory.getLog(ZookeeperConfigBootstrapConfiguration.class);
+
+   @Autowired(required = false)
+    private EnsembleProvider ensembleProvider;
 	@Bean
 	@ConditionalOnMissingBean
 	public ZookeeperPropertySourceLocator zookeeperPropertySourceLocator(
@@ -54,4 +68,25 @@ public ZookeeperConfigBootstrapConfiguration() {
 		System.out.println("ZookeeperConfigBootstrapConfiguration -----------ZookeeperPropertySourceLocator");
 		return new ZookeeperConfigProperties();
 	}
+	
+	//  Access Control Lists
+	 @Bean
+	  public CuratorFramework curatorFramework(RetryPolicy retryPolicy, ZookeeperProperties properties) throws Exception {
+		 CuratorFrameworkFactory.Builder builder = CuratorFrameworkFactory.builder();
+		 if (this.ensembleProvider != null) {
+				builder.ensembleProvider(this.ensembleProvider);
+			} else {
+				builder.connectString(properties.getConnectString());
+			}
+		     builder.authorization(Arrays.asList(new AuthInfo("digest", "user:password".getBytes())));
+			CuratorFramework curator = builder.retryPolicy(retryPolicy).build();
+			curator.start();
+			log.trace("blocking until connected to zookeeper for " + properties.getBlockUntilConnectedWait() + properties.getBlockUntilConnectedUnit());
+			curator.blockUntilConnected(properties.getBlockUntilConnectedWait(), properties.getBlockUntilConnectedUnit());
+			//curator.addAuthInfo("digest", "user:password".getBytes());
+		    // builder.authorization(Arrays.asList(new AuthInfo("digest", "user:password".getBytes())));
+		    return curator;
+		 /*curator.addAuthInfo("digest", "user:password".getBytes());
+	    return curator;*/
+	  }
 }
