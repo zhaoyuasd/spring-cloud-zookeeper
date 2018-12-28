@@ -39,7 +39,7 @@ public class DependencyEnvironmentPostProcessor
 		implements EnvironmentPostProcessor, Ordered {
 
 	public DependencyEnvironmentPostProcessor() {
-		System.out.println("DependencyEnvironmentPostProcessor in the context");
+		System.out.println(Thread.currentThread().getName()+"   DependencyEnvironmentPostProcessor in the context");
 	}
 	// after ConfigFileEnvironmentPostProcessorr
 	private int order = ConfigFileApplicationListener.DEFAULT_ORDER + 1;
